@@ -1,0 +1,189 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #021024; /* Fondo oscuro */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #021024; /* Fondo oscuro */
+    padding: 4px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+     /* Línea en la parte inferior del navbar */
+}
+
+/* Contenedor del navbar */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Estilos para la marca del navbar */
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+/* Marca en pantallas pequeñas */
+.small-screen {
+    display: block;
+    text-align: center;
+}
+
+/* Marca en pantallas grandes */
+.large-screen {
+    display: none;
+}
+
+/* Botón de toggler */
+.navbar-toggler {
+    background-color: #f39c12;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Icono del toggler */
+.navbar-toggler-icon {
+    background-color: #fff;
+    width: 25px;
+    height: 3px;
+    display: block;
+    position: relative;
+}
+
+.navbar-toggler-icon::before, 
+.navbar-toggler-icon::after {
+    content: '';
+    background-color: #fff;
+    width: 25px;
+    height: 3px;
+    display: block;
+    position: absolute;
+    top: -7px; /* Distancia entre las rayas */
+}
+
+.navbar-toggler-icon::after {
+    top: 8px; /* Distancia entre las rayas */
+}
+
+/* Menú de navegación */
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Centrado horizontal */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #f39c12; /* Cambio de color al pasar el ratón */
+}
+
+/* Estilo del botón de CV */
+.nav-button {
+    background-color: #f39c12;
+    color: #fff;
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-button:hover {
+    background-color: #e67e22;
+}
+
+.nav-button i {
+    font-size: 1.2rem;
+}
+
+/* Estilos para menú móvil */
+.navbar-collapse {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #021024;
+    padding: 10px 0;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    display: none;
+    align-items: center; /* Centrado de los elementos en la versión móvil */
+}
+
+.navbar-collapse.show {
+    display: flex;
+}
+
+.navbar-nav {
+    flex-direction: column; /* Columna en dispositivos móviles */
+    gap: 15px;
+    align-items: center; /* Alineación central en dispositivos móviles */
+}
+
+/* Media Queries para tamaños de pantalla */
+@media screen and (min-width: 992px) {
+    /* Mostrar la marca en pantallas grandes */
+    .large-screen {
+        display: block;
+    }
+
+    /* Mostrar menú horizontal en pantallas grandes */
+    .navbar-nav {
+        display: flex;
+        gap: 20px;
+        flex-direction: row; /* Fila en pantallas grandes */
+        align-items: center; /* Alineación centrada en pantallas grandes */
+    }
+
+    /* Ocultar el botón toggler en pantallas grandes */
+    .navbar-toggler {
+        display: none;
+    }
+
+    .navbar-collapse {
+        position: initial;
+        display: flex;
+        align-items: center; /* Alineación central en la versión de escritorio */
+    }
+}
+
+/* Estilo al activarse el toggle en dispositivos móviles */
+.navbar-toggler.open + .navbar-collapse {
+    display: flex;
+}

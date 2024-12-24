@@ -1,0 +1,295 @@
+/* Sección principal */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px; /* Espaciado para evitar choque con el navbar */
+    background-color: #021024;
+    color: #fff;
+    min-height: 100vh;
+    position: relative;
+    flex-wrap: wrap; /* Asegura que los elementos se ajusten en pantallas pequeñas */
+}
+
+/* Contenedor principal */
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+    gap: 40px; /* Espaciado entre imagen y texto */
+    flex-wrap: wrap; /* Asegura que los elementos se ajusten en pantallas pequeñas */
+}
+
+/* Imagen de perfil con marco animado */
+.profile-container {
+    flex-shrink: 0;
+    position: relative;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 50%; /* Asegura bordes circulares */
+    overflow: hidden; /* Evita que los efectos se salgan del contenedor */
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #f39c12;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Efecto "chisporroteo" o "lluvia de partículas" */
+.profile-container::before,
+.profile-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%; /* Asegura bordes circulares */
+    background: radial-gradient(circle, rgba(243, 156, 18, 0.8), transparent);
+    z-index: -1;
+    animation: rainEffect 1.5s infinite;
+}
+
+.profile-container::after {
+    background: radial-gradient(circle, rgba(230, 126, 34, 0.6), transparent);
+}
+
+@keyframes rainEffect {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.8;
+    }
+}
+
+/* Texto */
+.text-container {
+    flex: 1;
+    text-align: left;
+    line-height: 1.8;
+}
+
+/* Título animado */
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffa600;
+    margin-bottom: 20px;
+    height: 75px; /* Espacio reservado para la animación */
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que el texto haga un salto de línea si es necesario */
+    word-wrap: break-word; /* Permite que las palabras largas se dividan si es necesario */
+    white-space: normal; /* Asegura que el texto pueda romperse en varias líneas */
+}
+
+#typing-effect {
+    font-family: "Courier New", Courier, monospace;
+    border-right: 1px solid #f39c12;
+    white-space: normal; /* Permite que el texto haga salto de línea */
+    overflow: hidden;
+    word-wrap: break-word; /* Permite que el texto se ajuste y haga un salto de línea cuando sea necesario */
+}
+
+
+/* Estilo de las partículas */
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #f39c12;
+    animation: float 1s ease-out forwards;
+}
+
+
+
+
+/* Información adicional */
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+.description {
+    font-size: 1rem;
+    color: #d1d1d1;
+    margin-bottom: 30px;
+}
+
+/* Botón de descarga */
+.btn-download {
+    display: inline-block;
+    padding: 12px 20px;
+    background: linear-gradient(45deg, #f39c12, #e67e22);
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-download:hover {
+    background: linear-gradient(45deg, #e67e22, #f39c12);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Animación de "brillo" para el marco de la imagen */
+@keyframes shimmer {
+    0% {
+        box-shadow: 0 0 10px rgba(243, 156, 18, 1), 0 0 30px rgba(243, 156, 18, 0.8), 0 0 50px rgba(243, 156, 18, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 10px rgba(230, 126, 34, 1), 0 0 30px rgba(230, 126, 34, 0.8), 0 0 50px rgba(230, 126, 34, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(243, 156, 18, 1), 0 0 30px rgba(243, 156, 18, 0.8), 0 0 50px rgba(243, 156, 18, 0.6);
+    }
+}
+
+/* Contenedor de partículas */
+#particle-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Asegura que ocupe toda la ventana */
+    pointer-events: none; /* Para que no interfiera con la interacción */
+}
+
+/* Estilo de las partículas */
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 1;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    will-change: transform, opacity;
+}
+
+.particle:hover {
+    opacity: 0.7; /* Suaviza la interacción si el mouse cruza la partícula */
+}
+
+/* Animación de las partículas flotantes */
+@keyframes float {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+}
+
+/* Media Queries para Responsividad */
+@media screen and (max-width: 768px) {
+    .hero-section {
+        padding: 50px 10px;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .subtitle, .description {
+        text-align: center;
+    }
+
+    .btn-download {
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+
+
+/* Sección de habilidades */
+.skills {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.skills-title {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.skills-icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap; /* Asegura que se ajusten bien en pantallas pequeñas */
+}
+
+.skill {
+    display: inline-block;
+    margin: 10px;
+}
+
+.skill-icon {
+    width: 60px;
+    height: 60px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(243, 156, 18, 0.7);
+    filter: brightness(1.4);
+}
+
+/* Efecto luminoso para los iconos */
+.skill-icon {
+    filter: brightness(1);
+    transition: filter 0.5s ease-in-out, transform 0.3s ease;
+}
+
+.skill-icon:hover {
+    filter: brightness(1.4);
+    transform: scale(1.2);
+}
+
+/* Responsividad */
+@media screen and (max-width: 768px) {
+    .skills-icons {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<header class="hero-section">
+    <div class="content-wrapper">
+        <!-- Imagen de perfil con marco animado -->
+        <div class="profile-container">
+            <img src="{% static 'portfolio/perfil.jpg' %}" alt="Profile Picture" class="profile-img">
+        </div>
+        <!-- Texto -->
+        <div class="text-container">
+            <h1 class="title">
+                <span id="typing-effect"></span>
+            </h1>
+            <p class="subtitle">Soy <strong>Jhon Herrera</strong>, desarrollador backend.</p>
+            <p class="description">
+                Soy un apasionado estudiante de Ingeniería de Software, constantemente impulsado por el aprendizaje continuo. Especializado en Python con Django y Java con Spring Boot, disfruto compartiendo mis conocimientos y colaborando con otros. Me motiva la innovación y la creación de soluciones que generen un impacto positivo. Me gusta aportar ideas y opiniones, e incentivar a mi equipo para alcanzar nuestros objetivos. Cada día, me comprometo a mejorar mis habilidades y a explorar nuevas tecnologías que me permitan crecer profesionalmente.
+            </p>
+            
+            
+        </div>
+        
+    </div>
+    <div class="skills" id="skills">
+        <h3 class="skills-title">Habilidades</h3>
+        <div class="skills-icons">
+            <div class="skill">
+                <img src="{% static 'icons/mysql.svg' %}" alt="MySQL" class="skill-icon">
+                <p class="icon-name">MySQL</p>
+            </div>
+            <div class="skill">
+                <img src="{% static 'icons/django.svg' %}" alt="Django" class="skill-icon">
+                <p class="icon-name">Django</p>
+            </div>
+            <div class="skill">
+                <img src="{% static 'icons/python.svg' %}" alt="Python" class="skill-icon">
+                <p class="icon-name">Python</p>
+            </div>
+            <div class="skill">
+                <img src="{% static 'icons/java.svg' %}" alt="Java" class="skill-icon">
+                <p class="icon-name">Java</p>
+            </div>
+            <div class="skill">
+                <img src="{% static 'icons/spring.svg' %}" alt="Spring Boot" class="skill-icon">
+                <p class="icon-name">Spring Boot</p>
+            </div>
+            <div class="skill">
+                <img src="{% static 'icons/js.svg' %}" alt="JS" class="skill-icon">
+                <p class="icon-name">Java Script</p>
+            </div>
+        </div>
+    </div>
+    
+    
+</header>
+
+    <!-- Sección de partículas -->
+    <div id="particle-container"></div>
+
+<script>
+    // Efecto de escritura para la frase
+    const phrases = [
+        "Transformando Ideas en Soluciones",
+        "Apasionado por la Programación",
+        "Creando el Futuro con Código"
+    ];
+    let i = 0, j = 0, currentPhrase = "", isDeleting = false;
+
+    function typeEffect() {
+        const typingElement = document.getElementById("typing-effect");
+        if (j < phrases.length) {
+            if (!isDeleting && i <= phrases[j].length) {
+                currentPhrase = phrases[j].slice(0, i++);
+                typingElement.textContent = currentPhrase;
+            } else if (isDeleting && i > 0) {
+                currentPhrase = phrases[j].slice(0, i--);
+                typingElement.textContent = currentPhrase;
+            }
+
+            if (i === phrases[j].length && !isDeleting) {
+                isDeleting = true;
+                setTimeout(typeEffect, 1000); // Pausa antes de borrar
+            } else if (i === 0 && isDeleting) {
+                isDeleting = false;
+                j++;
+                setTimeout(typeEffect, 500); // Pausa antes de escribir la siguiente frase
+            } else {
+                setTimeout(typeEffect, isDeleting ? 50 : 100);
+            }
+        } else {
+            j = 0; // Reinicia las frases
+            typeEffect();
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", typeEffect);
+
+    
+// Efecto de partículas flotantes con colores aleatorios
+const particleContainer = document.getElementById("particle-container");
+
+function getRandomColor() {
+    const colors = ['#f39c12', '#e67e22', '#1abc9c', '#3498db', '#9b59b6', '#2ecc71'];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+function createParticle(event) {
+    const particle = document.createElement("div");
+    particle.classList.add("particle");
+    const size = Math.random() * 8 + 4; // Tamaño entre 4px y 12px
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${event.clientX}px`;
+    particle.style.top = `${event.clientY}px`;
+    particle.style.backgroundColor = getRandomColor(); // Asigna un color aleatorio
+
+    particleContainer.appendChild(particle);
+
+    // Mover ligeramente las partículas hacia afuera
+    const movementX = (Math.random() - 0.5) * 50; // Movimiento horizontal aleatorio
+    const movementY = (Math.random() - 0.5) * 50; // Movimiento vertical aleatorio
+    particle.style.transform = `translate(${movementX}px, ${movementY}px) scale(0)`;
+
+    // Eliminar partícula después de 800ms
+    setTimeout(() => {
+        particle.remove();
+    }, 800);
+}
+
+// Agregar eventos de movimiento del mouse
+document.addEventListener("mousemove", createParticle);
+
+</script>
+{% endblock %}
+
+
+            

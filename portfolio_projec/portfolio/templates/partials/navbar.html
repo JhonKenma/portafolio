@@ -1,0 +1,48 @@
+{% load static %}
+<nav class="navbar">
+    <div class="container">
+
+        <!-- Botón de toggler -->
+        <button class="navbar-toggler" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Contenido del navbar -->
+        <div class="navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">Sobre mí</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'projects' %}">Proyectos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}#skills">Habilidades</a>
+                </li>                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contacto</a>
+                </li>
+
+                <li class="nav-item d-flex align-items-center">
+                    <a class="btn nav-button" href="{% static 'portfolio/Practica02.pdf' %}" target="_blank">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Obtener el botón de toggler y el menú de navegación
+    const toggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+
+    // Agregar evento de clic al botón de toggler
+    toggler.addEventListener('click', () => {
+        // Alternar la clase "show" para mostrar/ocultar el menú
+        navbarCollapse.classList.toggle('show');
+        toggler.classList.toggle('open'); // Cambiar estilo de toggler cuando está abierto
+    });
+</script>
